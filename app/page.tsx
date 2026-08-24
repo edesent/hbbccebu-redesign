@@ -204,7 +204,7 @@ function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/12 bg-[#0F2B34]/90 text-white backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5 px-5 lg:px-8">
-        <Link href="/hbbccebu-redesign" className="flex min-w-0 items-center gap-3">
+        <Link href="/" className="flex min-w-0 items-center gap-3">
           <span className="grid size-12 shrink-0 place-items-center rounded bg-[#E7B64B] text-[#0F2B34]">
             <Church className="size-6" />
           </span>
