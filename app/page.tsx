@@ -1,59 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight,
   BookOpen,
-  CalendarDays,
   Church,
-  Clock3,
   ExternalLink,
-  HeartHandshake,
   Mail,
   MapPin,
-  MessageCircle,
-  Navigation,
   Phone,
-  Sparkles,
-  Users,
-  Utensils,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { Inter, Libre_Baskerville, Oswald } from "next/font/google";
+import { Libre_Baskerville, Source_Sans_3 } from "next/font/google";
 
 const childrenClass = "/hbbccebu-redesign/children-class.jpg";
 const childrenOutreach = "/hbbccebu-redesign/children-outreach.jpg";
 const churchFamily = "/hbbccebu-redesign/church-family.jpg";
 const pastorAlba = "/hbbccebu-redesign/pastor-alba.jpg";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
-const libre = Libre_Baskerville({
+const serif = Libre_Baskerville({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-serif",
 });
-const oswald = Oswald({
+
+const sans = Source_Sans_3({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-label",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
 });
 
 const SERIF = "[font-family:var(--font-serif)]";
-const LABEL = "[font-family:var(--font-label)]";
 
 export const metadata = {
-  title: "Home Bible Baptist Church Cebu - Redesign Concept",
+  title: "Home Bible Baptist Church Cebu",
   description:
-    "A modern website redesign concept for Home Bible Baptist Church of Cebu City, preserving its gospel message, history, schedule, and children's ministry.",
-  robots: { index: false, follow: false },
+    "Home Bible Baptist Church of Cebu City. Sunday worship, Bible teaching, children's outreach, and gospel ministry.",
 };
 
 const LINKS = {
   current: "https://hbbccebu.weebly.com/",
   history: "https://hbbccebu.weebly.com/history.html",
   beliefs: "https://hbbccebu.weebly.com/belief.html",
-  schedule: "https://hbbccebu.weebly.com/schedule-of-church-services.html",
   feeding: "https://hbbccebu.weebly.com/childrens-feeding.html",
-  contact: "https://hbbccebu.weebly.com/contact-us.html",
   maps:
     "https://www.google.com/maps/search/?api=1&query=Castle+Peak+Hotel+F.+Cabahug+Street+Cebu+City",
   email: "mailto:hbbccebu@yahoo.com",
@@ -62,10 +49,10 @@ const LINKS = {
 };
 
 const NAV = [
-  { href: "#visit", label: "Visit" },
+  { href: "#welcome", label: "Welcome" },
   { href: "#services", label: "Services" },
   { href: "#gospel", label: "Gospel" },
-  { href: "#outreach", label: "Outreach" },
+  { href: "#ministries", label: "Ministries" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -78,63 +65,6 @@ const SERVICE_TIMES = [
   { day: "Wednesday", time: "6:30 PM", title: "Midweek Service" },
 ];
 
-const GOSPEL_STEPS = [
-  {
-    title: "Acknowledge",
-    text: "All have sinned and come short of the glory of God. HBBC Cebu keeps that truth clear because grace only shines when the need is honest.",
-    verse: "Romans 3:23",
-  },
-  {
-    title: "Believe",
-    text: "Christ died for our sins, was buried, and rose again the third day according to the Scriptures.",
-    verse: "1 Corinthians 15:1-4",
-  },
-  {
-    title: "Call",
-    text: "The invitation is simple and serious: believe on the Lord Jesus Christ and receive Him as Savior.",
-    verse: "Romans 10:13",
-  },
-];
-
-const HISTORY = [
-  {
-    year: "1996",
-    title: "Organized in Cebu City",
-    text: "A pioneering work of Pastor Alexis Alba and Ma'am Nenita Labrador Alba was organized into an independent local church on December 15, 1996.",
-  },
-  {
-    year: "2015",
-    title: "Faith after demolition",
-    text: "After years of forced moves and the loss of rented meeting places, the church kept gathering, praying, and serving.",
-  },
-  {
-    year: "Today",
-    title: "Still meeting by grace",
-    text: "Sunday worship continues at Castle Peak Hotel while the church prays for a permanent property of its own.",
-  },
-];
-
-const MINISTRIES = [
-  {
-    icon: BookOpen,
-    title: "Bible classes",
-    text: "Children and adults gather around the Scriptures every week before worship.",
-    color: "#E7B64B",
-  },
-  {
-    icon: Utensils,
-    title: "Children's feeding",
-    text: "The church reaches poor families in the community with Bible class and nutritious feeding.",
-    color: "#C6533F",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Mercy and missions",
-    text: "A local church with a Great Commission heart for Cebu and beyond.",
-    color: "#1B6B6F",
-  },
-];
-
 const BELIEFS = [
   "The Holy Bible is the final authority for faith and life.",
   "There is one living and true God: Father, Son, and Holy Spirit.",
@@ -143,111 +73,69 @@ const BELIEFS = [
   "The mission of the church is the Great Commission.",
 ];
 
-const GALLERY: {
-  image: string;
-  alt: string;
-  title: string;
-  text: string;
-  className: string;
-}[] = [
-  {
-    image: childrenOutreach,
-    alt: "Children from the Cebu outreach ministry smiling together outside",
-    title: "Children's outreach",
-    text: "Saturday Bible class and care for families in the neighborhood.",
-    className: "sm:col-span-2",
-  },
-  {
-    image: pastorAlba,
-    alt: "Pastor Alexis Alba standing with another church leader",
-    title: "Faithful leadership",
-    text: "Pastor Alexis S. Alba, Senior Pastor.",
-    className: "",
-  },
-  {
-    image: churchFamily,
-    alt: "Home Bible Baptist Church Cebu family gathered in a home",
-    title: "Church family",
-    text: "A congregation shaped by fellowship, perseverance, and prayer.",
-    className: "lg:col-span-2",
-  },
-  {
-    image: childrenClass,
-    alt: "A Bible lesson with children seated outside in Cebu City",
-    title: "Bible teaching",
-    text: "The gospel carried into ordinary streets and homes.",
-    className: "",
-  },
-];
-
-export default function HbbcCebuRedesignPage() {
+export default function HomeBibleBaptistChurchPage() {
   return (
     <main
-      className={`${inter.variable} ${libre.variable} ${oswald.variable} min-h-screen bg-[#FAF7EF] font-sans text-[#17212B] selection:bg-[#E7B64B] selection:text-[#17212B]`}
+      className={`${serif.variable} ${sans.variable} min-h-screen bg-[#f7f1e6] font-sans text-[#27221d]`}
     >
+      <TopBar />
       <Header />
       <Hero />
-      <SignalBand />
-      <VisitSection />
-      <ServicesSection />
-      <GospelSection />
-      <HistorySection />
-      <OutreachSection />
-      <BeliefsSection />
-      <ContactSection />
+      <Welcome />
+      <ServiceTimes />
+      <Gospel />
+      <PastorAndHistory />
+      <Ministries />
+      <Beliefs />
+      <Contact />
       <Footer />
     </main>
   );
 }
 
+function TopBar() {
+  return (
+    <div className="border-b border-[#d8c8ac] bg-[#3b241b] px-5 py-2 text-sm text-[#f7f1e6]">
+      <div className="mx-auto flex max-w-6xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <p>Castle Peak Hotel, Princeling Hall, 2nd Floor, F. Cabahug Street, Cebu City</p>
+        <div className="flex flex-wrap gap-x-5 gap-y-1">
+          <a href={LINKS.phone} className="hover:underline">
+            +63 32 384 0761
+          </a>
+          <a href={LINKS.email} className="hover:underline">
+            hbbccebu@yahoo.com
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/12 bg-[#0F2B34]/90 text-white backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5 px-5 lg:px-8">
-        <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="grid size-12 shrink-0 place-items-center rounded bg-[#E7B64B] text-[#0F2B34]">
-            <Church className="size-6" />
+    <header className="bg-[#fbf7ef] px-5">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 border-b border-[#d8c8ac] py-6 lg:flex-row lg:items-center lg:justify-between">
+        <Link href="/" className="flex items-center gap-4">
+          <span className="grid size-14 shrink-0 place-items-center border-2 border-[#7c2f22] bg-[#fffdf8] text-[#7c2f22]">
+            <Church className="size-7" />
           </span>
-          <span className="min-w-0">
-            <span className={`${SERIF} block truncate text-lg font-bold text-white`}>
+          <span>
+            <span className={`${SERIF} block text-2xl font-bold leading-tight text-[#3b241b]`}>
               Home Bible Baptist Church
             </span>
-            <span className={`${LABEL} block text-xs font-semibold uppercase text-[#E7B64B]`}>
-              Cebu City
+            <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-[#7c2f22]">
+              Cebu City, Philippines
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold uppercase tracking-[0.08em] text-[#3b241b]">
           {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`${LABEL} text-sm font-semibold uppercase text-white/72 transition hover:text-white`}
-            >
+            <a key={item.href} href={item.href} className="hover:text-[#7c2f22] hover:underline">
               {item.label}
             </a>
           ))}
         </nav>
-
-        <div className="flex items-center gap-2">
-          <a
-            href={LINKS.current}
-            target="_blank"
-            rel="noreferrer"
-            className={`${LABEL} hidden h-11 items-center gap-2 rounded border border-white/22 px-4 text-sm font-semibold uppercase text-white transition hover:bg-white hover:text-[#0F2B34] sm:inline-flex`}
-          >
-            Current Site
-            <ExternalLink className="size-4" />
-          </a>
-          <a
-            href="#visit"
-            className={`${LABEL} inline-flex h-11 items-center gap-2 rounded bg-[#E7B64B] px-4 text-sm font-semibold uppercase text-[#0F2B34] transition hover:bg-white`}
-          >
-            Visit
-            <ArrowRight className="size-4" />
-          </a>
-        </div>
       </div>
     </header>
   );
@@ -255,177 +143,126 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-[#0F2B34] pt-20 text-white">
-      <Image
-        src={churchFamily}
-        alt="Home Bible Baptist Church Cebu church family gathered together"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-58"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,#0F2B34_0%,rgba(15,43,52,0.9)_39%,rgba(15,43,52,0.24)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,43,52,0.12)_0%,rgba(15,43,52,0.2)_52%,#0F2B34_100%)]" />
-
-      <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 pb-14 pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-        <div className="max-w-3xl self-center">
-          <p className={`${LABEL} text-sm font-semibold uppercase text-[#E7B64B]`}>
-            Independent Baptist Church in Cebu City
-          </p>
-          <h1 className={`${SERIF} mt-5 text-5xl font-bold leading-[1.02] text-white sm:text-7xl lg:text-8xl`}>
-            Home Bible Baptist Church Cebu
-          </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl">
-            A gospel-preaching church family serving Cebu through worship, Bible teaching,
-            children&apos;s outreach, and steady faith through every season.
-          </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#visit"
-              className={`${LABEL} inline-flex h-14 items-center justify-center gap-3 rounded bg-[#E7B64B] px-6 text-base font-semibold uppercase text-[#0F2B34] transition hover:bg-white`}
-            >
-              Plan a Visit
-              <Navigation className="size-5" />
-            </a>
-            <a
-              href="#gospel"
-              className={`${LABEL} inline-flex h-14 items-center justify-center gap-3 rounded border border-white/32 bg-white/6 px-6 text-base font-semibold uppercase text-white backdrop-blur transition hover:bg-white hover:text-[#0F2B34]`}
-            >
-              How to Be Saved
-              <BookOpen className="size-5" />
-            </a>
-          </div>
-        </div>
-
-        <div className="hidden self-end lg:block">
-          <div className="ml-auto max-w-md border border-white/16 bg-white/10 p-4 backdrop-blur-md">
-            <div className="relative aspect-[4/3] overflow-hidden rounded">
-              <Image
-                src={childrenOutreach}
-                alt="Children from Home Bible Baptist Church Cebu outreach ministry"
-                fill
-                sizes="420px"
-                className="object-cover"
-              />
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              <MiniStat label="Organized" value="1996" />
-              <MiniStat label="Sunday worship" value="10:45 AM" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SignalBand() {
-  return (
-    <section className="bg-[#0F2B34] text-white">
-      <div className="mx-auto grid max-w-7xl border-y border-white/10 px-5 sm:grid-cols-3 lg:px-8">
-        <Signal icon={Clock3} label="Sunday Worship" value="10:45 AM" />
-        <Signal icon={MapPin} label="Meeting Place" value="Castle Peak Hotel" />
-        <Signal icon={Users} label="Ministry" value="Cebu City families" />
-      </div>
-    </section>
-  );
-}
-
-function VisitSection() {
-  return (
-    <section id="visit" className="bg-[#FAF7EF] px-5 py-24 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+    <section className="bg-[#fbf7ef] px-5 py-12 sm:py-16">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
         <div>
-          <SectionIntro
-            kicker="You are welcome"
-            title="Worship with us in spirit and in truth."
-            text="HBBC Cebu currently meets each Sunday at Castle Peak Hotel, Princeling Hall, 2nd floor, F. Cabahug Street, Cebu City."
-          />
-          <div className="mt-8 flex flex-wrap gap-3">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-[#7c2f22]">
+            Independent Baptist Church
+          </p>
+          <h1 className={`${SERIF} text-5xl font-bold leading-[1.08] text-[#3b241b] sm:text-6xl`}>
+            A church home in Cebu City.
+          </h1>
+          <p className="mt-6 max-w-2xl text-xl leading-8 text-[#55483d]">
+            We are a Bible-believing Baptist church seeking to glorify God,
+            preach the gospel of Jesus Christ, and serve families in Cebu by
+            the grace of God.
+          </p>
+
+          <div className="mt-8 grid max-w-xl gap-3 border border-[#d8c8ac] bg-[#fffdf8] p-5 sm:grid-cols-2">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#7c2f22]">
+                Sunday Worship
+              </p>
+              <p className={`${SERIF} mt-1 text-3xl font-bold text-[#3b241b]`}>10:45 AM</p>
+            </div>
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#7c2f22]">
+                Meeting Place
+              </p>
+              <p className="mt-2 font-semibold leading-6 text-[#3b241b]">
+                Castle Peak Hotel, Princeling Hall
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href="#contact"
+              className="inline-flex h-12 items-center justify-center bg-[#7c2f22] px-5 font-semibold text-white hover:bg-[#5f241b]"
+            >
+              Plan Your Visit
+            </a>
             <a
               href={LINKS.maps}
               target="_blank"
               rel="noreferrer"
-              className={`${LABEL} inline-flex h-12 items-center gap-2 rounded bg-[#0F2B34] px-5 text-sm font-semibold uppercase text-white transition hover:bg-[#1B6B6F]`}
+              className="inline-flex h-12 items-center justify-center border border-[#7c2f22] bg-transparent px-5 font-semibold text-[#7c2f22] hover:bg-[#efe3d1]"
             >
               Get Directions
-              <MapPin className="size-4" />
-            </a>
-            <a
-              href={LINKS.schedule}
-              target="_blank"
-              rel="noreferrer"
-              className={`${LABEL} inline-flex h-12 items-center gap-2 rounded border border-[#17212B]/18 px-5 text-sm font-semibold uppercase text-[#17212B] transition hover:bg-[#E7B64B]`}
-            >
-              Full Schedule
-              <ExternalLink className="size-4" />
             </a>
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <InfoPanel
-            icon={CalendarDays}
-            title="Sunday Morning"
-            text="Prayer, Sunday School, coffee break, and worship service."
-            accent="#E7B64B"
-          />
-          <InfoPanel
-            icon={MessageCircle}
-            title="Online Streaming"
-            text="Services are also streamed through the church Facebook page."
-            accent="#1B6B6F"
-          />
-          <div className="relative min-h-80 overflow-hidden rounded border border-[#17212B]/12 sm:col-span-2">
+        <figure className="border border-[#d8c8ac] bg-white p-3 shadow-sm">
+          <div className="relative aspect-[16/10] overflow-hidden">
             <Image
-              src={childrenClass}
-              alt="Children listening during a Bible class in Cebu City"
+              src={churchFamily}
+              alt="Home Bible Baptist Church Cebu church family gathered together"
               fill
-              sizes="(min-width: 1024px) 54vw, 100vw"
+              priority
+              sizes="(min-width: 1024px) 52vw, 100vw"
               className="object-cover"
             />
           </div>
+          <figcaption className="px-2 pt-3 text-sm italic text-[#6f6256]">
+            A church family continuing in worship, prayer, and fellowship.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  );
+}
+
+function Welcome() {
+  return (
+    <section id="welcome" className="border-y border-[#d8c8ac] bg-[#efe3d1] px-5 py-14">
+      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+        <SectionHeading eyebrow="Welcome" title="You are invited to worship with us." />
+        <div className="space-y-5 text-lg leading-8 text-[#493d33]">
+          <p>
+            Whether you are new to church, looking for a church family, or
+            visiting Cebu City, we would be glad to have you join us. Our
+            services are simple: congregational singing, prayer, fellowship,
+            and Bible preaching.
+          </p>
+          <p>
+            Children are welcome, and our church also reaches children and
+            families through Bible classes and feeding ministry.
+          </p>
         </div>
       </div>
     </section>
   );
 }
 
-function ServicesSection() {
+function ServiceTimes() {
   return (
-    <section id="services" className="bg-white">
-      <div className="grid lg:grid-cols-[0.86fr_1.14fr]">
-        <div className="bg-[#C6533F] px-5 py-24 text-white lg:px-12">
-          <div className="mx-auto max-w-xl">
-            <p className={`${LABEL} text-sm font-semibold uppercase text-white/72`}>
-              Weekly rhythm
-            </p>
-            <h2 className={`${SERIF} mt-4 text-5xl font-bold leading-tight sm:text-6xl`}>
-              A simple week built around Scripture and prayer.
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-white/82">
-              Know where to be and when to arrive, whether you are coming for
-              Sunday School, worship, prayer, or the midweek service.
-            </p>
-          </div>
+    <section id="services" className="bg-[#fbf7ef] px-5 py-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading eyebrow="Service Times" title="Weekly services and Bible classes." />
+          <a
+            href={LINKS.current}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 font-semibold text-[#7c2f22] hover:underline"
+          >
+            View current site <ExternalLink className="size-4" />
+          </a>
         </div>
-        <div className="grid bg-[#E7B64B] p-5 sm:grid-cols-2 lg:p-8">
+
+        <div className="overflow-hidden border border-[#d8c8ac] bg-white">
           {SERVICE_TIMES.map((service, index) => (
-            <article
+            <div
               key={`${service.day}-${service.time}-${service.title}`}
-              className="min-h-48 border border-[#17212B]/15 bg-[#FAF7EF] p-7"
-              style={{ backgroundColor: index % 3 === 1 ? "#FFFFFF" : "#FAF7EF" }}
+              className={`grid gap-3 px-5 py-4 sm:grid-cols-[150px_150px_1fr] ${
+                index === 0 ? "" : "border-t border-[#e5d8c3]"
+              }`}
             >
-              <p className={`${LABEL} text-sm font-semibold uppercase text-[#1B6B6F]`}>
-                {service.day}
-              </p>
-              <p className={`${SERIF} mt-4 text-4xl font-bold leading-tight text-[#17212B]`}>
-                {service.time}
-              </p>
-              <p className="mt-3 text-base font-semibold text-[#17212B]/72">
-                {service.title}
-              </p>
-            </article>
+              <p className="font-bold uppercase tracking-[0.08em] text-[#7c2f22]">{service.day}</p>
+              <p className={`${SERIF} text-xl font-bold text-[#3b241b]`}>{service.time}</p>
+              <p className="text-lg text-[#493d33]">{service.title}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -433,164 +270,164 @@ function ServicesSection() {
   );
 }
 
-function GospelSection() {
+function Gospel() {
   return (
-    <section id="gospel" className="bg-[#0F2B34] px-5 py-24 text-white lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
-          <SectionIntro
-            kicker="How you can be saved"
-            title="The gospel stays at the center."
-            text="HBBC Cebu leads with salvation because every ministry begins with the good news of Jesus Christ."
-            dark
-          />
-          <p className={`${SERIF} max-w-2xl text-2xl font-bold italic leading-snug text-[#E7B64B] lg:ml-auto`}>
-            &quot;For by grace are ye saved through faith; and that not of yourselves:
-            it is the gift of God.&quot;
+    <section id="gospel" className="bg-[#3b241b] px-5 py-16 text-[#fbf7ef]">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div>
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-[#dfc089]">
+            The Gospel
+          </p>
+          <h2 className={`${SERIF} text-4xl font-bold leading-tight sm:text-5xl`}>
+            How you can know Christ.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-[#eadbc6]">
+            The most important message of this church is not about a building
+            or program. It is the good news that Jesus Christ died for sinners,
+            was buried, and rose again.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {GOSPEL_STEPS.map((step, index) => (
-            <article key={step.title} className="rounded border border-white/12 bg-white/8 p-7">
-              <p className={`${LABEL} text-sm font-semibold uppercase text-[#E7B64B]`}>
-                0{index + 1}
-              </p>
-              <h3 className={`${SERIF} mt-5 text-3xl font-bold text-white`}>
-                {step.title}
-              </h3>
-              <p className="mt-4 text-base leading-7 text-white/72">{step.text}</p>
-              <p className={`${LABEL} mt-6 text-sm font-semibold uppercase text-white/52`}>
-                {step.verse}
-              </p>
-            </article>
-          ))}
+        <div className="space-y-5 text-lg leading-8 text-[#f5ead9]">
+          <p>
+            The Bible says, &quot;For all have sinned, and come short of the glory
+            of God.&quot; Sin separates man from God, and no amount of religion or
+            good works can save the soul.
+          </p>
+          <p>
+            But God, in mercy, sent His Son. Jesus Christ paid the penalty for
+            sin on the cross and rose from the dead. Salvation is by grace
+            through faith in Him.
+          </p>
+          <p className={`${SERIF} border-l-4 border-[#dfc089] pl-5 text-2xl font-bold italic leading-snug text-white`}>
+            &quot;Believe on the Lord Jesus Christ, and thou shalt be saved.&quot;
+          </p>
         </div>
       </div>
     </section>
   );
 }
 
-function HistorySection() {
+function PastorAndHistory() {
   return (
-    <section className="bg-[#FAF7EF] px-5 py-24 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.84fr_1.16fr]">
+    <section className="bg-[#fbf7ef] px-5 py-16">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <figure className="border border-[#d8c8ac] bg-white p-3 shadow-sm">
+          <div className="relative mx-auto aspect-[3/4] max-h-[620px] overflow-hidden bg-[#f7f1e6]">
+            <Image
+              src={pastorAlba}
+              alt="Pastor Alexis Alba of Home Bible Baptist Church Cebu"
+              fill
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-contain"
+            />
+          </div>
+          <figcaption className="px-2 pt-3 text-sm italic text-[#6f6256]">
+            Pastor Alexis S. Alba, Senior Pastor.
+          </figcaption>
+        </figure>
+
         <div>
-          <SectionIntro
-            kicker="Church history"
-            title="A church shaped by grace and perseverance."
-            text="From Barangay T. Padilla to temporary meeting places, HBBC Cebu's story is not polished real estate. It is people continuing by God's grace."
-          />
+          <SectionHeading eyebrow="Our Story" title="Organized by God's grace in Cebu City." />
+          <div className="mt-6 space-y-5 text-lg leading-8 text-[#493d33]">
+            <p>
+              Home Bible Baptist Church was organized as an independent local
+              church on December 15, 1996, through the pioneering work of
+              Pastor Alexis Alba and Ma&apos;am Nenita Labrador Alba.
+            </p>
+            <p>
+              The church has passed through seasons of forced moves and the
+              loss of rented meeting places, yet the congregation has continued
+              gathering, praying, and serving.
+            </p>
+            <p>
+              Today, Sunday worship continues at Castle Peak Hotel while the
+              church prays for a permanent property of its own.
+            </p>
+          </div>
           <a
             href={LINKS.history}
             target="_blank"
             rel="noreferrer"
-            className={`${LABEL} mt-8 inline-flex h-12 items-center gap-2 rounded bg-[#587A41] px-5 text-sm font-semibold uppercase text-white transition hover:bg-[#0F2B34]`}
+            className="mt-7 inline-flex items-center gap-2 font-semibold text-[#7c2f22] hover:underline"
           >
-            Read Original History
-            <ExternalLink className="size-4" />
+            Read the church history <ExternalLink className="size-4" />
           </a>
         </div>
-
-        <ol className="grid content-start gap-4">
-          {HISTORY.map((item) => (
-            <li key={item.year} className="grid gap-5 rounded border border-[#17212B]/12 bg-white p-6 sm:grid-cols-[110px_1fr]">
-              <p className={`${LABEL} text-3xl font-bold uppercase text-[#C6533F]`}>
-                {item.year}
-              </p>
-              <div>
-                <h3 className={`${SERIF} text-2xl font-bold text-[#17212B]`}>
-                  {item.title}
-                </h3>
-                <p className="mt-3 leading-7 text-[#17212B]/68">{item.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );
 }
 
-function OutreachSection() {
+function Ministries() {
   return (
-    <section id="outreach" className="bg-[#E9F0EA] px-5 py-24 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <SectionIntro
-            kicker="Children's ministry"
-            title="Reaching families with the gospel and a meal."
-            text="The feeding ministry serves children through Bible class and nutritious feeding, depending on the generosity of the church and friends who want to help."
+    <section id="ministries" className="border-y border-[#d8c8ac] bg-[#efe3d1] px-5 py-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-9 max-w-3xl">
+          <SectionHeading eyebrow="Ministries" title="Bible teaching, fellowship, and care for children." />
+          <p className="mt-5 text-lg leading-8 text-[#493d33]">
+            HBBC Cebu serves through ordinary church life: preaching, prayer,
+            Sunday School, children&apos;s Bible classes, and feeding ministry for
+            families in the community.
+          </p>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3">
+          <MinistryPhoto
+            image={childrenClass}
+            title="Children's Bible Class"
+            text="Teaching children the Word of God in the community."
           />
-          <div className="grid gap-4 sm:grid-cols-3">
-            {MINISTRIES.map((ministry) => (
-              <article key={ministry.title} className="rounded border border-[#17212B]/12 bg-white p-5">
-                <span
-                  className="grid size-11 place-items-center rounded text-[#17212B]"
-                  style={{ backgroundColor: ministry.color }}
-                >
-                  <ministry.icon className="size-5 text-white" />
-                </span>
-                <h3 className={`${SERIF} mt-5 text-2xl font-bold`}>{ministry.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#17212B]/68">{ministry.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-12 grid auto-rows-[minmax(280px,auto)] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {GALLERY.map((item) => (
-            <figure
-              key={item.title}
-              className={`${item.className} group relative min-h-80 overflow-hidden rounded bg-[#0F2B34]`}
-            >
-              <Image
-                src={item.image}
-                alt={item.alt}
-                fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,43,52,0.02)_0%,rgba(15,43,52,0.84)_100%)]" />
-              <figcaption className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <p className={`${SERIF} text-2xl font-bold`}>{item.title}</p>
-                <p className="mt-2 max-w-sm text-sm leading-6 text-white/75">{item.text}</p>
-              </figcaption>
-            </figure>
-          ))}
+          <MinistryPhoto
+            image={childrenOutreach}
+            title="Children's Feeding"
+            text="Serving children and families through Bible class and a meal."
+          />
+          <MinistryPhoto
+            image={churchFamily}
+            title="Church Fellowship"
+            text="A local congregation continuing together in prayer and love."
+          />
         </div>
       </div>
     </section>
   );
 }
 
-function BeliefsSection() {
+function MinistryPhoto({ image, title, text }: { image: string; title: string; text: string }) {
   return (
-    <section className="bg-white px-5 py-24 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+    <article className="border border-[#d8c8ac] bg-white p-3 shadow-sm">
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <Image src={image} alt={title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
+      </div>
+      <div className="px-2 py-4">
+        <h3 className={`${SERIF} text-2xl font-bold text-[#3b241b]`}>{title}</h3>
+        <p className="mt-2 leading-7 text-[#5b4e43]">{text}</p>
+      </div>
+    </article>
+  );
+}
+
+function Beliefs() {
+  return (
+    <section className="bg-[#fbf7ef] px-5 py-16">
+      <div className="mx-auto grid max-w-6xl gap-9 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
-          <SectionIntro
-            kicker="Articles of faith"
-            title="Historic Baptist convictions, easier to explore."
-            text="The church's full statement of faith is long and important. These essentials give visitors a clear starting place for careful reading."
-          />
+          <SectionHeading eyebrow="What We Believe" title="Bible-believing Baptist doctrine." />
           <a
             href={LINKS.beliefs}
             target="_blank"
             rel="noreferrer"
-            className={`${LABEL} mt-8 inline-flex h-12 items-center gap-2 rounded border border-[#17212B]/18 px-5 text-sm font-semibold uppercase text-[#17212B] transition hover:bg-[#E7B64B]`}
+            className="mt-6 inline-flex items-center gap-2 font-semibold text-[#7c2f22] hover:underline"
           >
-            Full Beliefs
-            <ExternalLink className="size-4" />
+            Full statement of faith <ExternalLink className="size-4" />
           </a>
         </div>
-        <ul className="grid gap-3">
+        <ul className="space-y-3">
           {BELIEFS.map((belief) => (
-            <li key={belief} className="flex gap-4 rounded border border-[#17212B]/10 bg-[#FAF7EF] p-5">
-              <span className="mt-1 grid size-8 shrink-0 place-items-center rounded bg-[#1B6B6F] text-white">
-                <Sparkles className="size-4" />
-              </span>
-              <p className="text-lg leading-8 text-[#17212B]/74">{belief}</p>
+            <li key={belief} className="flex gap-3 border-b border-[#d8c8ac] pb-3 text-lg leading-7 text-[#493d33]">
+              <BookOpen className="mt-1 size-5 shrink-0 text-[#7c2f22]" />
+              <span>{belief}</span>
             </li>
           ))}
         </ul>
@@ -599,55 +436,41 @@ function BeliefsSection() {
   );
 }
 
-function ContactSection() {
+function Contact() {
   return (
-    <section id="contact" className="bg-[#0F2B34] text-white">
-      <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="px-5 py-24 lg:px-12">
-          <div className="mx-auto max-w-xl">
-            <p className={`${LABEL} text-sm font-semibold uppercase text-[#E7B64B]`}>
-              Cebu City
-            </p>
-            <h2 className={`${SERIF} mt-4 text-5xl font-bold leading-tight sm:text-6xl`}>
-              Come worship with HBBC Cebu this Sunday.
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-white/72">
-              Questions about directions, service times, online streaming, or the
-              children&apos;s feeding ministry? Reach out before you come.
-            </p>
-            <div className="mt-9 grid gap-3">
-              <ContactLink
-                href={LINKS.maps}
-                icon={MapPin}
-                label="Castle Peak Hotel, Princeling Hall, 2nd Floor, F. Cabahug Street"
-              />
-              <ContactLink href={LINKS.phone} icon={Phone} label="+63 32 384 0761" />
-              <ContactLink href={LINKS.mobile} icon={Phone} label="+63 968 898 8353" />
-              <ContactLink href={LINKS.email} icon={Mail} label="hbbccebu@yahoo.com" />
-            </div>
-          </div>
+    <section id="contact" className="bg-[#fffdf8] px-5 py-16">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <SectionHeading eyebrow="Visit Us" title="We would be glad to see you." />
+          <p className="mt-5 text-lg leading-8 text-[#493d33]">
+            Come for Sunday School, worship, evening service, or Wednesday
+            midweek service. If you have questions before visiting, contact the
+            church by phone or email.
+          </p>
         </div>
 
-        <div className="bg-[#1B6B6F] p-5 lg:p-8">
-          <div className="relative min-h-[560px] overflow-hidden rounded bg-[#FAF7EF] text-[#17212B]">
-            <Image
-              src={pastorAlba}
-              alt="Pastor Alexis Alba of Home Bible Baptist Church Cebu"
-              fill
-              sizes="(min-width: 1024px) 48vw, 100vw"
-              className="object-contain object-center"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,247,239,0.0)_35%,rgba(15,43,52,0.92)_100%)]" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <p className={`${LABEL} text-sm font-semibold uppercase text-[#E7B64B]`}>
-                Senior Pastor
-              </p>
-              <h3 className={`${SERIF} mt-2 text-4xl font-bold`}>Alexis S. Alba</h3>
-              <p className="mt-3 max-w-md leading-7 text-white/76">
-                Serving Home Bible Baptist Church of Cebu City with a continuing
-                prayer for a permanent church property.
-              </p>
-            </div>
+        <div className="border border-[#d8c8ac] bg-[#fbf7ef] p-5">
+          <ContactRow icon={MapPin} label="Castle Peak Hotel, Princeling Hall, 2nd Floor, F. Cabahug Street" href={LINKS.maps} />
+          <ContactRow icon={Phone} label="+63 32 384 0761" href={LINKS.phone} />
+          <ContactRow icon={Phone} label="+63 968 898 8353" href={LINKS.mobile} />
+          <ContactRow icon={Mail} label="hbbccebu@yahoo.com" href={LINKS.email} />
+          <div className="mt-5 flex flex-wrap gap-3">
+            <a
+              href={LINKS.maps}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 items-center gap-2 bg-[#7c2f22] px-4 font-semibold text-white hover:bg-[#5f241b]"
+            >
+              Directions <MapPin className="size-4" />
+            </a>
+            <a
+              href={LINKS.feeding}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 items-center gap-2 border border-[#7c2f22] px-4 font-semibold text-[#7c2f22] hover:bg-[#efe3d1]"
+            >
+              Feeding Ministry <ExternalLink className="size-4" />
+            </a>
           </div>
         </div>
       </div>
@@ -657,114 +480,41 @@ function ContactSection() {
 
 function Footer() {
   return (
-    <footer className="bg-[#091C22] px-5 py-10 text-white lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center gap-3">
-          <span className="grid size-12 place-items-center rounded bg-[#E7B64B] text-[#091C22]">
-            <Church className="size-6" />
-          </span>
-          <div>
-            <p className={`${SERIF} text-xl font-bold`}>Home Bible Baptist Church Cebu</p>
-            <p className="text-sm text-white/58">Serving Cebu City by the grace of God.</p>
-          </div>
+    <footer className="bg-[#3b241b] px-5 py-8 text-[#f7f1e6]">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 border-t border-[#7d5a45] pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className={`${SERIF} text-xl font-bold`}>Home Bible Baptist Church Cebu</p>
+          <p className="mt-1 text-sm text-[#d8c8ac]">Serving Cebu City by the grace of God.</p>
         </div>
-        <div className={`${LABEL} flex flex-wrap gap-4 text-sm font-semibold uppercase text-white/65`}>
-          <a href={LINKS.current} target="_blank" rel="noreferrer" className="hover:text-white">
-            Current Site
-          </a>
-          <a href={LINKS.feeding} target="_blank" rel="noreferrer" className="hover:text-white">
-            Feeding Ministry
-          </a>
-          <a href={LINKS.contact} target="_blank" rel="noreferrer" className="hover:text-white">
-            Contact
-          </a>
+        <div className="flex flex-wrap gap-4 text-sm font-semibold uppercase tracking-[0.08em] text-[#d8c8ac]">
+          {NAV.map((item) => (
+            <a key={item.href} href={item.href} className="hover:text-white hover:underline">
+              {item.label}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
   );
 }
 
-function SectionIntro({
-  kicker,
-  title,
-  text,
-  dark = false,
-}: {
-  kicker: string;
-  title: string;
-  text: string;
-  dark?: boolean;
-}) {
+function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
-    <div className="max-w-3xl">
-      <p className={`${LABEL} text-sm font-semibold uppercase ${dark ? "text-[#E7B64B]" : "text-[#C6533F]"}`}>
-        {kicker}
-      </p>
-      <h2 className={`${SERIF} mt-4 text-5xl font-bold leading-tight ${dark ? "text-white" : "text-[#17212B]"} sm:text-6xl`}>
-        {title}
-      </h2>
-      <p className={`mt-6 text-lg leading-8 ${dark ? "text-white/72" : "text-[#17212B]/68"}`}>
-        {text}
-      </p>
+    <div>
+      <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-[#7c2f22]">{eyebrow}</p>
+      <h2 className={`${SERIF} text-4xl font-bold leading-tight text-[#3b241b] sm:text-5xl`}>{title}</h2>
     </div>
   );
 }
 
-function Signal({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: string }) {
-  return (
-    <div className="flex min-h-32 items-center gap-4 border-white/10 py-7 sm:border-r sm:last:border-r-0">
-      <span className="grid size-12 shrink-0 place-items-center rounded bg-[#E7B64B] text-[#0F2B34]">
-        <Icon className="size-5" />
-      </span>
-      <span>
-        <span className={`${LABEL} block text-sm font-semibold uppercase text-white/55`}>
-          {label}
-        </span>
-        <span className={`${SERIF} block text-2xl font-bold text-white`}>{value}</span>
-      </span>
-    </div>
-  );
-}
-
-function MiniStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded bg-white/12 p-4">
-      <p className={`${LABEL} text-xs font-semibold uppercase text-white/56`}>{label}</p>
-      <p className={`${SERIF} mt-1 text-2xl font-bold text-white`}>{value}</p>
-    </div>
-  );
-}
-
-function InfoPanel({
-  icon: Icon,
-  title,
-  text,
-  accent,
-}: {
-  icon: LucideIcon;
-  title: string;
-  text: string;
-  accent: string;
-}) {
-  return (
-    <article className="rounded border border-[#17212B]/12 bg-white p-7">
-      <span className="grid size-12 place-items-center rounded text-white" style={{ backgroundColor: accent }}>
-        <Icon className="size-5" />
-      </span>
-      <h3 className={`${SERIF} mt-7 text-3xl font-bold text-[#17212B]`}>{title}</h3>
-      <p className="mt-4 leading-7 text-[#17212B]/68">{text}</p>
-    </article>
-  );
-}
-
-function ContactLink({
-  href,
+function ContactRow({
   icon: Icon,
   label,
+  href,
 }: {
-  href: string;
   icon: LucideIcon;
   label: string;
+  href: string;
 }) {
   const external = href.startsWith("http");
 
@@ -773,12 +523,10 @@ function ContactLink({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      className="group flex items-center gap-4 rounded border border-white/12 bg-white/8 p-4 transition hover:border-[#E7B64B]/60 hover:bg-white/12"
+      className="flex gap-3 border-b border-[#d8c8ac] py-4 text-[#3b241b] hover:text-[#7c2f22]"
     >
-      <span className="grid size-11 shrink-0 place-items-center rounded bg-[#E7B64B] text-[#0F2B34] transition group-hover:bg-white">
-        <Icon className="size-5" />
-      </span>
-      <span className="text-base font-semibold leading-6 text-white">{label}</span>
+      <Icon className="mt-0.5 size-5 shrink-0" />
+      <span className="text-lg font-semibold leading-7">{label}</span>
     </a>
   );
 }
